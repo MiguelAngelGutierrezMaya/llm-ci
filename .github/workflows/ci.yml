@@ -30,8 +30,8 @@ jobs:
         run: |
           docker compose up -d
           echo "🦙 Waiting ollama to be ready"
-          until docker-compose exec 06_2_ia_good_practices_ollama echo "ready"; do sleep 5; done
-          docker-compose exec 06_2_ia_good_practices_ollama ollama pull mistral
+          until docker compose exec 06_2_ia_good_practices_ollama echo "ready"; do sleep 5; done
+          docker compose exec 06_2_ia_good_practices_ollama ollama pull mistral
 
       - name: 🛠️ Build
         run: npm run build
