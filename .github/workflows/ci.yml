@@ -1,0 +1,48 @@
+name: CI
+
+on: push
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    name: 🚀 Test and build
+    timeout-minutes: 15
+
+    steps:
+      - name: 👍 Checkout
+        uses: actions/checkout@v3
+
+      - name: ❇️ Setup node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: 📦 Cache ollama model
+        uses: actions/cache@v4
+        with:
+          path: ~/.ollama
+          key: ${{ runner.os }}-ollama
+
+      - name: 📥 Install Dependencies
+        run: npm install
+
+      - name: 🐳 Start the environment
+        run: |
+          docker compose up -d
+          echo "🦙 Waiting ollama to be ready"
+          until docker-compose exec 06_2_ia_good_practices_ollama echo "ready"; do sleep 5; done
+          docker-compose exec 06_2_ia_good_practices_ollama ollama pull mistral
+
+      - name: 🛠️ Build
+        run: npm run build
+
+      - name: ⚙️create env file and set env variable
+        run: |
+          touch .env
+          echo OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }} >> .env
+          export OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }}
+
+      - name: ✅ Test
+        run: |
+          npm run test:ci
+          npm run test
