@@ -25,9 +25,13 @@ describe("OpenAIChatGPT35CourseSuggestionsGenerator should", () => {
 	});
 
 	it("suggest only existing courses", () => {
-		const suggestedCourseNames = suggestions.map((suggestion) => suggestion.courseName);
+		const suggestedCourseNames: string[] = suggestions.map((suggestion) => suggestion.courseName);
 
-		expect(generator.existingCodelyCourses).toEqual(expect.arrayContaining(suggestedCourseNames));
+		for (const suggestion of suggestedCourseNames) {
+			expect(generator.existingCodelyCourses).toContain(suggestion);
+		}
+
+		// expect(generator.existingCodelyCourses).toEqual(expect.arrayContaining(suggestedCourseNames));
 	});
 
 	it("suggest only courses that have not been completed", () => {
