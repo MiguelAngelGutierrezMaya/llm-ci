@@ -36,16 +36,10 @@ jobs:
       - name: 🛠️ Build
         run: npm run build
 
-      - name: ⚙️create env file and set env variable
+      - name: ✅ Test
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
         run: |
-          # touch .env
-          # echo OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }} >> .env
-          echo "$OPENAI_API_KEY"
           export OPENAI_API_KEY=$OPENAI_API_KEY
-
-      - name: ✅ Test
-        run: |
           npm run test:ci
           npm run test
