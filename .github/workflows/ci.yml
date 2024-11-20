@@ -33,7 +33,7 @@ jobs:
           until docker compose exec 06_2_ia_good_practices_ollama echo "ready"; do sleep 5; done
           docker compose exec 06_2_ia_good_practices_ollama ollama pull mistral
           docker ps
-          curl --location 'https://api.fitbank-ai.com' \
+          curl --location 'http://localhost:11434' \
             --header 'Accept: application/json' \
             --header 'Content-Type: application/json'
 
