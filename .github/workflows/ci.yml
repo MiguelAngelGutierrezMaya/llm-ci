@@ -33,7 +33,7 @@ jobs:
           until docker compose exec 06_2_ia_good_practices_ollama echo "ready"; do sleep 5; done
           docker compose exec 06_2_ia_good_practices_ollama ollama pull mistral
           docker ps
-          docker logs --tail 100 -f 06_2_ia_good_practices_ollama
+          docker logs --tail 100 -f llm-ci-06_2_ia_good_practices_ollama-1
 
       - name: 🛠️ Build
         run: npm run build
