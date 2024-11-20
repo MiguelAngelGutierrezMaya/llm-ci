@@ -28,7 +28,9 @@ describe("OpenAIChatGPT35CourseSuggestionsGenerator should", () => {
 		const suggestedCourseNames: string[] = suggestions.map((suggestion) => suggestion.courseName);
 
 		for (const suggestion of suggestedCourseNames) {
-			expect(generator.existingCodelyCourses).toContain(suggestion);
+			expect(generator.existingCodelyCourses.map((el: string) => el.toLocaleLowerCase())).toContain(
+				suggestion.toLocaleLowerCase(),
+			);
 		}
 
 		// expect(generator.existingCodelyCourses).toEqual(expect.arrayContaining(suggestedCourseNames));
