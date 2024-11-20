@@ -14,7 +14,7 @@ describe("OllamaMistralCourseSuggestionsGenerator should", () => {
 		suggestions = await generator.generate(
 			UserCourseSuggestionsMother.withoutSuggestions(someExistingCourses),
 		);
-	}, 60000);
+	}, 30000);
 
 	it("suggest only 3 courses", () => {
 		expect(suggestions.length).toBe(3);
