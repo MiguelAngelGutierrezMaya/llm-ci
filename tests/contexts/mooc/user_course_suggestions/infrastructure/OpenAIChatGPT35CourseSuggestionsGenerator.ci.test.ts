@@ -76,6 +76,6 @@ describe("OpenAIChatGPT35CourseSuggestionsGenerator should", () => {
 	// 	}, 30000);
 });
 
-function formatList(items: string[]): string {
-	return items.map((name) => `- ${name}`).join(`\n`);
-}
+// function formatList(items: string[]): string {
+// 	return items.map((name) => `- ${name}`).join(`\n`);
+// }
