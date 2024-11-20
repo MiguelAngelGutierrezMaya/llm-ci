@@ -51,6 +51,7 @@ Y que tienes que seguir estas reglas:
 	- Añade también el motivo de la sugerencia (IMPORTANTE: Ha de ser en castellano)
 	- Ejemplo de respuesta de la razón de la sugerencia: "Porque haciendo el curso de DDD en PHP has demostrado interés en PHP".
 	- Devuelve sólo la lista de cursos con sus razones, sin añadir información adicional.
+	- Devuelve exactamente el nombre del curso tal como está en la lista de cursos, sin añadir información adicional.
 	- Devuelves cada curso y su razón por separado.
 	- Siempre respondes utilizando el siguiente JSON Schema (importante que las claves de "suggestedCourse" y "reason" van entre comillas dobles):
 
